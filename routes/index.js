@@ -45,7 +45,7 @@ var seedData = [
     {
         CUSTOMER_ID: '1990s',
         BILLING_ID: 'Mariah  Carey',
-        SHIPPING_ID: 'One Sweet  Day',
+        SHIPPING_ID: 'One Sweet Day',
         DATE: 16,
         PRODUCT_VECTOR: 'test',
         ORDER_TOTAL: 100,
