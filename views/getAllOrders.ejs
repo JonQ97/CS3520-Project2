@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>mLab MongoDB test</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<div class="container">
+    <h2>Database Results getting Orders </h2>
+    <ul>
+        <% results.forEach(function(r) { %>
+        <li><%= r.name %> - <%= r.frequency %></li>
+        <ul>
+            <li>From:( <%=r.START_Longitude %>, <%=r.START_Latitude %> )</li>
+            <li>TO: ( <%=r.END_Longitude %>,<%=r.END_Latitude %> ) </li>
+        </ul>
+        <br/><br/>
+        <% }); %>
+    </ul>
+</div>
+
+</body>
+</html>
