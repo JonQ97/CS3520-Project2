@@ -2,22 +2,22 @@
 <html>
 <head>
     <title>mLab MongoDB test</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+
 </head>
 <body>
 <div class="container">
-    <h2>Database Results getting Orders </h2>
+    <h2>Database Results getting ORDERS </h2>
     <ul>
         <% results.forEach(function(r) { %>
-        <li><%= r.CUSTOMER_ID %> - <%= r.BILLING_ID %></li>
-        <ul>
-            <li><%=r.SHIPPING_ID %>, <%=r.DATE %></li>
-            <li><%=r.PRODUCT_VECTOR %>,<%=r.ORDER_TOTAL %></li>
-        </ul>
+        <li>CUSTOMER_ID = <%= r.CUSTOMER_ID %></li>
+        <li>BILLING_ID = <%= r.BILLING_ID %></li>
+        <li>SHIPPING_ID = <%=r.SHIPPING_ID %></li>
+        <li>DATE = <%=r.DATE %></li>
+        <li>PRODUCT_VECTOR = <%=r.PRODUCT_VECTOR %></li>
+        <li>ORDER_TOTAL = <%=r.ORDER_TOTAL %></li>
         <br/><br/>
         <% }); %>
     </ul>
 </div>
-
 </body>
 </html>

@@ -11,28 +11,36 @@ var mongodb = require('mongodb');
 //_id, CUSTOMER_ID, BILLING_ID, SHIPPING_ID, DATE, PRODUCT_VECTOR, ORDER_TOTAL
 var seedData = [
     {
-        CUSTOMER_ID: '1970TEST',
-        BILLING_ID: 'Debby  BooneTEST123',
-        SHIPPING_ID: 'You Light  Up My LifeTEST123',
-        DATE: 10,
-        PRODUCT_VECTOR: 'testTEST123',
-        ORDER_TOTAL: 100
+        CUSTOMER_ID: '0001',
+        BILLING_ID: 'Jon Snow',
+        SHIPPING_ID: 'Castle Winterfell',
+        DATE: 2017,
+        PRODUCT_VECTOR: 'Targaryean',
+        ORDER_TOTAL: 800
     },
     {
-        CUSTOMER_ID: '1980s',
-        BILLING_ID: 'Olivia  Newton-JohnTEST',
-        SHIPPING_ID: 'Physical',
-        DATE: 10,
-        PRODUCT_VECTOR: 'test',
-        ORDER_TOTAL: 100
+        CUSTOMER_ID: '0002',
+        BILLING_ID: 'Daenerys Targaryean',
+        SHIPPING_ID: 'Dragon Stone',
+        DATE: 2018,
+        PRODUCT_VECTOR: 'Targaryean',
+        ORDER_TOTAL: 900
     },
     {
-        CUSTOMER_ID: '1990s',
-        BILLING_ID: 'Mariah  Carey',
-        SHIPPING_ID: 'One Sweet Day',
-        DATE: 16,
-        PRODUCT_VECTOR: 'test',
-        ORDER_TOTAL: 100
+        CUSTOMER_ID: '0003',
+        BILLING_ID: 'Gregor Clegane',
+        SHIPPING_ID: 'The Mountain',
+        DATE: 2019,
+        PRODUCT_VECTOR: 'House Lannister',
+        ORDER_TOTAL: 1000
+    },
+    {
+        CUSTOMER_ID: '0004',
+        BILLING_ID: 'Sandor Clegane',
+        SHIPPING_ID: 'The Hound',
+        DATE: 2020,
+        PRODUCT_VECTOR: 'House Clegane',
+        ORDER_TOTAL: 1100
     }
 ];
 
@@ -62,15 +70,15 @@ mongodb.MongoClient.connect(uri, function(err, db) {
          * to the hit  "One Sweet Day".
          */
         ORDERS.update(
-            { ORDER: 'One  Sweet Day' },
-            { $set: {  BILLING_ID: 'Mariah Carey ft. Boyz II MenTEST' } },
+            { CUSTOMER_ID: '0003' },
+            { $set: {  PRODUCT_VECTOR: 'House Clegane' } },
             function (err,  result) {
                 if(err) throw  err;
                 /*
                  * Finally we  run a query which returns all the hits that spend 10 or
                  * more weeks  at number 1.
                  */
-                songs.find({ DATE : { $gte: 10 } }).sort({ CUSTOMER_ID: 1}).toArray(function (err, docs) {
+                ORDERS.find({ DATE : { $gte: 10 } }).sort({ CUSTOMER_ID: 1}).toArray(function (err, docs) {
                     if(err)  throw err;
                     docs.forEach(function  (doc) {
                         console.log('In the  ' + doc['shopping cart'] + ', ' + doc['item ordered'] + ' by ' + doc ['customer']
