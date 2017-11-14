@@ -53,3 +53,5 @@ module.exports.getAllOrders =  function (request, response) {
         });
     });//end of connect
 };//end function
+
+module.exports = router;
