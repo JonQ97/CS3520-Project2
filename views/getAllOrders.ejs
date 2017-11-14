@@ -11,8 +11,8 @@
         <% results.forEach(function(r) { %>
         <li><%= r.CUSTOMER_ID %> - <%= r.BILLING_ID %></li>
         <ul>
-            <li>From:( <%=r.SHIPPING_ID %>, <%=r.DATE %> )</li>
-            <li>TO: ( <%=r.PRODUCT_VECTOR %>,<%=r.ORDER_TOTAL %> ) </li>
+            <li><%=r.SHIPPING_ID %>, <%=r.DATE %></li>
+            <li><%=r.PRODUCT_VECTOR %>,<%=r.ORDER_TOTAL %></li>
         </ul>
         <br/><br/>
         <% }); %>
