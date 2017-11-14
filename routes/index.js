@@ -6,20 +6,10 @@ var router = express.Router();
 var controllerMongoCollection = require('../controllers/database'); //load controller code dealing with database mongodb and Routes collection
 
 //MAY HAVE OTHER CODE in index.js
-
-
 //CODE to route /getAllOrders to appropriate  Controller function
 //**************************************************************************
 //***** mongodb get all of the Orders in ORDERS collection
 //      and Render information with an ejs view
 router.get('/getAllOrders', controllerMongoCollection.getAllOrders);
-
-
-
-/* GET home page.
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});*/
-
 
 module.exports = router;
