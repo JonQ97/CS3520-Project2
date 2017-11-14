@@ -12,19 +12,19 @@ var mongodb = require('mongodb');
 var seedData = [
     {
         CUSTOMER_ID: '1970TEST',
-        BILLING_ID: 'Debby  BooneTEST',
-        SHIPPING_ID: 'You Light  Up My LifeTEST',
+        BILLING_ID: 'Debby  BooneTEST123',
+        SHIPPING_ID: 'You Light  Up My LifeTEST123',
         DATE: 10,
-        PRODUCT_VECTOR: 'testTEST',
-        ORDER_TOTAL: 100,
+        PRODUCT_VECTOR: 'testTEST123',
+        ORDER_TOTAL: 100
     },
     {
         CUSTOMER_ID: '1980s',
-        BILLING_ID: 'Olivia  Newton-John',
+        BILLING_ID: 'Olivia  Newton-JohnTEST',
         SHIPPING_ID: 'Physical',
         DATE: 10,
         PRODUCT_VECTOR: 'test',
-        ORDER_TOTAL: 100,
+        ORDER_TOTAL: 100
     },
     {
         CUSTOMER_ID: '1990s',
@@ -32,14 +32,15 @@ var seedData = [
         SHIPPING_ID: 'One Sweet Day',
         DATE: 16,
         PRODUCT_VECTOR: 'test',
-        ORDER_TOTAL: 100,
+        ORDER_TOTAL: 100
     }
 ];
 
 // Standard URI format:  mongodb://[dbuser:dbpassword@]host:port/dbname
 // GO TO mLab.com account to see what YOUR database URL is
 //CHANGE the url so it is correct for your account
-var uri ='mongodb://project2TestUser:project2Test@ds064198.mlab.com:64198/project-2-orders';
+//var uri ='mongodb://project2TestUser:project2Test@ds064198.mlab.com:64198/project-2-orders';
+var uri ='mongodb://project2TestUser:project2Test@ds255715.mlab.com:55715/heroku_nkdzppr7';
 
 //using mongodb module
 mongodb.MongoClient.connect(uri, function(err, db) {
