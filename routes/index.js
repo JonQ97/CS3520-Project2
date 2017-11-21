@@ -19,7 +19,7 @@ router.post('/readOrderAndRespond', function(req, res, next) {
 //_id, CUSTOMER_ID, BILLING_ID, SHIPPING_ID, DATE, PRODUCT_VECTOR, ORDER_TOTAL
     var seedData = [
         {
-            $firstName: '$firstName',
+            FirstName: $firstName,
         }
     ];
 
