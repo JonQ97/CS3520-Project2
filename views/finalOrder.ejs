@@ -89,25 +89,19 @@
     <% } %>
 
 </table>
-<table width="930" border="0"><tr>
-        <td height="174">&nbsp;</td>
-        <td width = "175" valign = "top"><p><span style = "float:right;">$<%= origPrice %> </span>Subtotal </p>
+<table width="95%" border="0">
+    <tr>
+        <td>
+            <form action = "thankyou.php">
+                <input type="submit" value = "Continue">
+            </form>
+        </td>
+        <td><p><span style = "float:right;">$<%= origPrice %> </span>Subtotal </p>
             <p style = "color: #3084DC"><span style = "float:right;">$ <%= tax %> </span>Estimated Tax</p>
             <p ><span style = "float:right;">  $<%= ship %> </span>Shipping</p>
             <p><span style = "float:right;"> $<%= totalPrice %></span>Total</p>
         </td>
     </tr>
-</table>
-<table width="100%" border="0">
-    <tbody>
-    <tr>
-        <td height="20">
-            <form action = "thankyou.php">
-                <input type="submit" value = "Continue">
-            </form>
-        </td>
-    </tr>
-    </tbody>
 </table>
 </body>
 </html>
