@@ -270,8 +270,8 @@ router.post('/storeData', function (req, res, next) {
         date: date,
 
         origPrice: origPrice,
-        tax: tax,
-        totalPrice: totalPrice,
+        tax: parseFloat(Math.round(tax * 100) / 100).toFixed(2),
+        totalPrice: parseFloat(Math.round(totalPrice * 100) / 100).toFixed(2),
 
         ship: ship,
 
