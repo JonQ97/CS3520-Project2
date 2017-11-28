@@ -1,243 +1,238 @@
+
 <!doctype html>
+
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>Final Order</title>
-    <link rel="stylesheet" href="http://csweb01.csueastbay.edu/~pg4425/Project1/productStyle.css">
-    <link rel="stylesheet" href="http://csweb01.csueastbay.edu/~pg4425/Project1/navigationBar.css">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="http://csweb01.csueastbay.edu/~pg4425/Project1/productStyles.css">
+    <title>finalOrder</title>
 </head>
-<body bgcolor=beige>
 
-<ul>
-    <li><a class="active">COMPLETE YOUR ORDER</a></li>
-    <li>&nbsp;</li>
-    <li>&nbsp;</li>
-    <li>&nbsp;</li>
-    <li><a href="http://csweb01.csueastbay.edu/~pg4425/Project1/index.html"> HOME </a></li>
-    <li><a href="http://csweb01.csueastbay.edu/~pg4425/Project1/ProductsPage.html"> PRODUCTS</a></li>
-</ul>
+<body>
+
+<h1>Order Summary:</h1>
+
+<table width="100%" border="2">
+    <tbody>
+    <tr>
+        <td height="37"><h2>Shipping</h2></td>
+    </tr>
+    </tbody>
+</table>
+
+
+<table width="100%" border="0">
+    <tbody>
+    </tbody>
+    <tbody>
+    </tbody>
+    <tbody>
+    </tbody>
+    <tbody>
+    </tbody>
+    <tbody>
+    </tbody>
+    <tbody>
+    </tbody>
+    <tbody>
+    </tbody>
+    <tbody>
+    </tbody>
+    <tbody>
+    <tr>
+        <td width="24%" height="25"><b>Shipping Information:</b></td>
+        <td width="27%">&nbsp;</td>
+        <td width="49%" valign = "top" >&nbsp;</td>
+    </tr>
+    <tr>
+        <td height="131" valign = "top">
+
+            <%= fName %>
+            <%= lName %> <br>
+            <%= addr1 %><br>
+            <%= addr2 %> <br>
+            <%= city %>,
+            <%= state %>
+            <%= zip %> <br>
+
+        </td>
+        <td valign = "top">
+
+            <%= phone %> <br>
+            <%= email %> <br>
+
+
+
+        </td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+    </tr>
+    </tbody>
+    <tbody>
+    <tr></tr>
+    </tbody>
+    <tbody>
+    <tr></tr>
+    </tbody>
+    <tbody>
+    <tr></tr>
+    </tbody>
+    <tbody>
+    <tr></tr>
+    </tbody>
+    <tbody>
+    <tr></tr>
+    </tbody>
+    <tbody>
+    <tr></tr>
+    </tbody>
+    <tbody>
+    <tr></tr>
+    </tbody>
+    <tbody>
+    <tr></tr>
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+<table width="930" border="0"><tr>
+
+        <th width="512" height="55" scope="col"></th>
+        <th width="180" scope="col"><h3>Item#</h3></th>
+        <th width="180" scope="col"><h3>Product ID</h3></th>
+        <th width="180" scope="col"><h3>Product Name</h3></th>
+        <th width="180" scope="col"><h3>Quantity</h3></th>
+        <th width="180" scope="col"><h3>Price</h3></th>
+        <th width="180" scope="col"><h3>Cost</h3></th>
+
+    </tr>
+
+
+    <% for (var i = 0; i < prodID.length; i++) { %>
+
+
+    <tr>
+        <td><img src="http://csweb01.csueastbay.edu/~pg4425/Project1/images/<%=prodID[i]%>.jpg" width = "300" height = "200" ></td>
+        <td>
+            <center><%= i+1 %>)</center>
+        </td>
+        <td>
+            <center><%=prodID[i]%></center>
+        </td>
+        <td>
+            <center><%=itemNames[i]%></center>
+        </td>
+        <td>
+            <center><%=quant[i]%></center>
+        </td>
+        <td>
+            <center>$<%=price[i]%></center>
+        </td>
+        <td>
+            <center>$<%=price[i]%></center>
+        </td>
+    </tr>
+
+    <% } %>
+
+
+</table>
+
+<br>
+<br>
+<br>
+<br>
+<br>
 <br>
 
-    <h1>Order Summary:</h1>
+<table width="930" border="0"><tr>
 
-    <table width="100%" border="2">
-        <tbody>
-        <tr>
-            <td height="37"><h2>Shipping</h2></td>
-        </tr>
-        </tbody>
-    </table>
+        <td height="174">&nbsp;</td>
+        <td></td>
 
+        <td width = "175" valign = "top"><p><span style = "float:right;">$<%= origPrice %> </span>Subtotal </p>
+            <p>&nbsp;</p>
+            <p style = "color: #3084DC"><span style = "float:right;">$ <%= tax %> </span>Estimated Tax</p>
+            <p ><span style = "float:right;">  $<%= ship %> </span>Shipping</p>
+            <p><span style = "float:right;"> <%= totalCost %></span>Total</p>
+        </td>
 
-    <table width="100%" border="0">
-        <tbody>
-        </tbody>
-        <tbody>
-        </tbody>
-        <tbody>
-        </tbody>
-        <tbody>
-        </tbody>
-        <tbody>
-        </tbody>
-        <tbody>
-        </tbody>
-        <tbody>
-        </tbody>
-        <tbody>
-        </tbody>
-        <tbody>
-        <tr>
-            <td width="24%" height="25"><b>Shipping Information:</b></td>
-            <td width="27%">&nbsp;</td>
-            <td width="49%" valign = "top" >&nbsp;</td>
-        </tr>
-        <tr>
-            <td height="131" valign = "top">
-
-                <%= fName %>
-                <%= lName %> <br>
-                <%= addr1 %><br>
-                <%= addr2 %> <br>
-                <%= city %>,
-                <%= state %>
-                <%= zip %> <br>
-
-            </td>
-            <td valign = "top">
-
-                <%= phone %> <br>
-                <%= email %> <br>
-
-
-
-            </td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-        </tr>
-        </tbody>
-        <tbody>
-        <tr></tr>
-        </tbody>
-        <tbody>
-        <tr></tr>
-        </tbody>
-        <tbody>
-        <tr></tr>
-        </tbody>
-        <tbody>
-        <tr></tr>
-        </tbody>
-        <tbody>
-        <tr></tr>
-        </tbody>
-        <tbody>
-        <tr></tr>
-        </tbody>
-        <tbody>
-        <tr></tr>
-        </tbody>
-        <tbody>
-        <tr></tr>
-        </tbody>
-    </table>
+    </tr>
+</table>
 
 
 
 
+<br>
+<br>
+<br>
+
+<table width="100%" border="2">
+    <tbody>
+    <tr>
+        <td height="34"><h2>Billing</h2></td>
+    </tr>
+    </tbody>
+</table>
+<table width="100%" border="0">
+    <tbody>
+    <tr>
+        <td width="28%" height="20"><b>Billing Information:</b></td>
+        <td width="50%">&nbsp;</td>
+        <td width="22%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td height="117" valign = "top">
+
+            cc:&nbsp; <%= cardNum %> <br>
+            cvv/cvc: &nbsp; <%= CVV %> <br>
+            Postal: &nbsp; <%= czip %> <br>
+            Card Holder: &nbsp;<%= cname %> <br>
+        </td>
+        <td valign = "top">
+            <b>Card Type:</b>
+            <%= card %> <br>
 
 
 
+        </td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+
+        <td>&nbsp;</td>
+        <td height="20">
+
+
+            <form action = "http://csweb01.csueastbay.edu/~pg4425/Project1/clearCartLink.php">
+                <input type="submit" value = "continue">
+            </form>
+
+
+        </td>
+
+        <td>&nbsp;</td>
+    </tr>
+    </tbody>
+</table>
+<p>&nbsp;</p>
+
+</body>
 
 
 
-    <table width="930" border="0"><tr>
-
-            <th width="512" height="55" scope="col"></th>
-            <th width="180" scope="col"><h3>Item#</h3></th>
-            <th width="180" scope="col"><h3>Product ID</h3></th>
-            <th width="180" scope="col"><h3>Product Name</h3></th>
-            <th width="180" scope="col"><h3>Quantity</h3></th>
-            <th width="180" scope="col"><h3>Price</h3></th>
-            <th width="180" scope="col"><h3>Cost</h3></th>
-
-        </tr>
-
-
-        <% for (var i = 0; i < prodID.length; i++) { %>
-
-
-        <tr>
-            <td><img src="http://csweb01.csueastbay.edu/~pg4425/Project1/images/<%=prodID[i]%>.jpg" width = "300" height = "200" ></td>
-            <td>
-                <center><%= i+1 %>)</center>
-            </td>
-            <td>
-                <center><%=prodID[i]%></center>
-            </td>
-            <td>
-                <center><%=itemNames[i]%></center>
-            </td>
-            <td>
-                <center><%=quant[i]%></center>
-            </td>
-            <td>
-                <center>$<%=price[i]%></center>
-            </td>
-            <td>
-                <center>$<%=price[i]%></center>
-            </td>
-        </tr>
-
-        <% } %>
-
-
-    </table>
-
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-
-    <table width="930" border="0"><tr>
-
-            <td height="174">&nbsp;</td>
-            <td></td>
-
-            <td width = "175" valign = "top"><p><span style = "float:right;">$<%= origPrice %> </span>Subtotal </p>
-                <p>&nbsp;</p>
-                <p style = "color: #3084DC"><span style = "float:right;">$ <%= tax %> </span>Estimated Tax</p>
-                <p ><span style = "float:right;">  $<%= ship %> </span>Shipping</p>
-                <p><span style = "float:right;"> <%= totalCost %></span>Total</p>
-            </td>
-
-        </tr>
-    </table>
-
-
-
-
-    <br>
-    <br>
-    <br>
-
-    <table width="100%" border="2">
-        <tbody>
-        <tr>
-            <td height="34"><h2>Billing</h2></td>
-        </tr>
-        </tbody>
-    </table>
-    <table width="100%" border="0">
-        <tbody>
-        <tr>
-            <td width="28%" height="20"><b>Billing Information:</b></td>
-            <td width="50%">&nbsp;</td>
-            <td width="22%">&nbsp;</td>
-        </tr>
-        <tr>
-            <td height="117" valign = "top">
-
-                cc:&nbsp; <%= cardNum %> <br>
-                cvv/cvc: &nbsp; <%= CVV %> <br>
-                Postal: &nbsp; <%= czip %> <br>
-                Card Holder: &nbsp;<%= cname %> <br>
-            </td>
-            <td valign = "top">
-                <b>Card Type:</b>
-                <%= card %> <br>
-
-
-
-            </td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-
-            <td>&nbsp;</td>
-            <td height="20">
-
-
-                <form action = "http://csweb01.csueastbay.edu/~pg4425/Project1/clearCartLink.php">
-                    <input type="submit" value = "continue">
-                </form>
-
-
-            </td>
-
-            <td>&nbsp;</td>
-        </tr>
-        </tbody>
-    </table>
-    <p>&nbsp;</p>
-
-    </body>
 </html>
 
 
