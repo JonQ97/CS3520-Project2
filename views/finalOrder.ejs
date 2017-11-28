@@ -73,10 +73,10 @@
             <center>$<%=price[i]%></center>
         </td>
         <td>
-            <center>$<%=(price[i]*0.08)%></center>
+            <center>$<%=parseFloat(Math.round((price[i]*0.08) * 100) / 100).toFixed(2)%></center>
         </td>
         <td>
-            <center>$<%=(price[i]*1.08)%></center>
+            <center>$<%=parseFloat(Math.round((price[i]*1.08) * 100) / 100).toFixed(2)%></center>
         </td>
     </tr>
 
