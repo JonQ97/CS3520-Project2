@@ -4,15 +4,22 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="http://csweb01.csueastbay.edu/~pg4425/Project1/productStyles.css">
+    <link rel="stylesheet" href="http://csweb01.csueastbay.edu/~jb4522/Project1/ProductStyles.css">
     <title>finalOrder</title>
 </head>
 
 <body>
 
-<h1>Order Summary:</h1>
+<div class="topnav" id="myTopnav">
+    <a href="home.php">Home</a>
+    <a href="productsPage.html">Products</a>
+    <a href="cart.php">Cart</a>
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+</div>
 
-<table width="100%" border="2">
+<h1>Order Summery:</h1>
+
+<table width="100%" height="41" border="2">
     <tbody>
     <tr>
         <td height="37"><h2>Shipping</h2></td>
@@ -21,7 +28,7 @@
 </table>
 
 
-<table width="100%" border="0">
+<table width="100%" height="198" border="0">
     <tbody>
     </tbody>
     <tbody>
@@ -124,7 +131,7 @@
 
 
     <tr>
-        <td><img src="http://csweb01.csueastbay.edu/~pg4425/Project1/images/<%=prodID[i]%>.jpg" width = "300" height = "200" ></td>
+        <td><img src="http://csweb01.csueastbay.edu/~jb4522/Project1/images/Profile/<%=prodID[i]%>.jpg" width = "300" height = "200" ></td>
         <td>
             <center><%= i+1 %>)</center>
         </td>
@@ -135,7 +142,7 @@
             <center><%=itemNames[i]%></center>
         </td>
         <td>
-            <center><%=quantAry[i]%></center>
+            <center><%=quant[i]%></center>
         </td>
         <td>
             <center>$<%=price[i]%></center>
@@ -166,7 +173,7 @@
             <p>&nbsp;</p>
             <p style = "color: #3084DC"><span style = "float:right;">$ <%= tax %> </span>Estimated Tax</p>
             <p ><span style = "float:right;">  $<%= ship %> </span>Shipping</p>
-            <p><span style = "float:right;"> <%= totalCost %></span>Total</p>
+            <p><span style = "float:right;"> <%= totalPrice %></span>Total</p>
         </td>
 
     </tr>
@@ -197,9 +204,9 @@
         <td height="117" valign = "top">
 
             cc:&nbsp; <%= cardNum %> <br>
-            cvv/cvc: &nbsp; <%= CVV %> <br>
-            Postal: &nbsp; <%= czip %> <br>
-            Card Holder: &nbsp;<%= cname %> <br>
+            cvv/cvc: &nbsp; <%= cvv %> <br>
+            Postal: &nbsp; <%= cardZip %> <br>
+            Card Holder: &nbsp;<%= cardName %> <br>
         </td>
         <td valign = "top">
             <b>Card Type:</b>
@@ -216,7 +223,7 @@
         <td height="20">
 
 
-            <form action = "http://csweb01.csueastbay.edu/~pg4425/Project1/clearCartLink.php">
+            <form action = "thankyou.php">
                 <input type="submit" value = "continue">
             </form>
 

@@ -24,59 +24,15 @@ router.post('/storeData', function (req, res, next) {
     var phone = " ";
     var email = " ";
 
-    var sfName = 'shello';  //retrieve the data associated with name
-    var slName = " ";
-    var saddr1 = " ";
-    var saddr2 = " ";
-    var scity = " ";
-    var sstate = " ";
-    var szip = " ";
-    var sphone = " ";
-    var semail = " ";
-
     var card = " ";
     var cardNum = " ";
-    var CVV = " ";
+    var cvv = " ";
     var expireMM = " ";
     var expireYY = " ";
-    var czip = " ";
-    var cname = " ";
+    var cardZip = " ";
+    var cardName = " ";
 
-    /*  ALL POST PARAMETERS FROM FINALORDER2.PHP:
-    ->addPostParameter('fName', $_SESSION['fName'])
-    ->addPostParameter('lName', $_SESSION['lName'])
-    ->addPostParameter('addr1', $_SESSION['addr1'])
-    ->addPostParameter('addr2', $_SESSION['addr2'])
-    ->addPostParameter('city', $_SESSION['city'])
-    ->addPostParameter('state', $_SESSION['state'])
-    ->addPostParameter('zip', $_SESSION['zip'])
-    ->addPostParameter('phone', $_SESSION['phone'])
-    ->addPostParameter('email', $_SESSION['email'])
-    ->addPostParameter('sameAsBilling', $_SESSION['sameAsBilling'])
 
-    ->addPostParameter('sfName', $_SESSION['sfName'])
-    ->addPostParameter('slName', $_SESSION['slName'])
-    ->addPostParameter('saddr1', $_SESSION['saddr1'])
-    ->addPostParameter('saddr2', $_SESSION['saddr2'])
-    ->addPostParameter('scity', $_SESSION['scity'])
-    ->addPostParameter('sstate', $_SESSION['sstate'])
-    ->addPostParameter('szip', $_SESSION['szip'])
-    ->addPostParameter('sphone', $_SESSION['sphone'])
-    ->addPostParameter('semail', $_SESSION['semail'])
-
-    ->addPostParameter('card', $_SESSION['card'])
-    ->addPostParameter('cardNum', $_SESSION['cardNum'])
-    ->addPostParameter('CVV', $_SESSION['CVV'])
-    ->addPostParameter('expireMM', $_SESSION['expireMM'])
-    ->addPostParameter('expireYY', $_SESSION['expireYY'])
-    ->addPostParameter('czip', $_SESSION['czip'])
-    ->addPostParameter('cname', $_SESSION['cname'])
-
-    ->addPostParameter('products', $productStr)
-    ->addPostParameter('date', $date )
-    ->addPostParameter('ship', $_SESSION['ship'])
-    ->addPostParameter('totalCost', $_SESSION['totalCost'])
-    */
 
     var cardExp = req.body.expireMM + "/" + req.body.expireYY;
 
@@ -90,36 +46,32 @@ router.post('/storeData', function (req, res, next) {
     phone = req.body.phone;
     email = req.body.email;
 
-    sfName = req.body.sfName;
-    slName = req.body.slName;
-    saddr1 = req.body.saddr1;
-    saddr2 = req.body.saddr2;
-    scity = req.body.scity;
-    sstate = req.body.sstate;
-    szip = req.body.szip;
-    sphone = req.body.sphone;
-    semail = req.body.semail;
-
     card = req.body.card;
     cardNum = req.body.cardNum;
-    CVV = req.body.CVV;
-    cname = req.body.cname;
-    czip = req.body.czip;
+    cvv = req.body.cvv;
+    cardName = req.body.cardName;
+    cardZip = req.body.cardZip;
 
     var date = req.body.date;
-    var origPrice = req.body.totalCost;
+    var origPrice = req.body.totalPrice;
     var products = req.body.products;
     var ship = req.body.ship;
     var tax = (+origPrice * 0.08);
-    var totalCost = +origPrice + +ship + +tax;
+    var totalPrice = +origPrice + +ship + +tax;
 
     var items = req.body.itemNames;
+
+
 
     //Places item names into arrays
 
     var nameAry = items.split(', ');
 
     test = nameAry[0];
+
+
+
+
 
 
     //********************************************************************************************************
@@ -189,6 +141,12 @@ router.post('/storeData', function (req, res, next) {
 
 
 
+
+
+
+
+
+
     // Create seed data -- it is in JSON format
     var seedCust = [
         {
@@ -209,13 +167,13 @@ router.post('/storeData', function (req, res, next) {
         {
             _id: shippingID,
             CUSTOMER_ID: customerID,
-            FIRSTNAME: sfName,
-            LASTNAME: slName,
-            Address1: saddr1,
-            Address2: saddr2,
-            SHIPPING_CITY: scity,
-            SHIPPING_STATE: sstate,
-            SHIPPING_ZIP: szip
+            FIRSTNAME: fName,
+            LASTNAME: lName,
+            Address1: addr1,
+            Address2: addr2,
+            SHIPPING_CITY: city,
+            SHIPPING_STATE: state,
+            SHIPPING_ZIP: zip
 
         }
     ];
@@ -227,8 +185,8 @@ router.post('/storeData', function (req, res, next) {
             CREDITCARDTYPE: card,
             CREDITCARDNUM: cardNum,
             CREDITCARDEXP: cardExp,
-            CREDITCARDSECURITYNUM: CVV,
-            CARD_NAME: cname
+            CREDITCARDSECURITYNUM: cvv,
+            CARD_NAME: cardName
             //CardZip: cardZip
 
         }
@@ -242,7 +200,7 @@ router.post('/storeData', function (req, res, next) {
             SHIPPING_ID: shippingID,
             DATE: date,
             PRODUCT_VECTOR: products,
-            ORDER_TOTAL: totalCost
+            ORDER_TOTAL: totalPrice
 
 
         }
@@ -253,7 +211,7 @@ router.post('/storeData', function (req, res, next) {
 // GO TO mLab.com account to see what YOUR database URL is
 //CHANGE the url so it is correct for your account
     //var uri = 'mongodb://steven:steven@ds259175.mlab.com:59175/songscs3520';
-    var uri = 'mongodb://project2TestUser:project2Test@ds255715.mlab.com:55715/heroku_nkdzppr7';
+    var uri = 'mongodb://project2TestUser:project2Test@ds255715.mlab.com:55715/heroku_nkdzppr7'
 
 //using mongodb module
     mongodb.MongoClient.connect(uri, function (err, db) {
@@ -303,27 +261,17 @@ router.post('/storeData', function (req, res, next) {
         phone: phone,
         email: email,
 
-        sfName: sfName,
-        slName: slName,
-        saddr1: saddr1,
-        saddr2: saddr2,
-        scity: scity,
-        sstate: sstate,
-        szip: szip,
-        sphone: sphone,
-        semail: semail,
-
         card: card,
         cardNum: cardNum,
-        cvv: CVV,
-        cardName: cname,
-        cardZip: czip,
+        cvv: cvv,
+        cardName: cardName,
+        cardZip: cardZip,
 
         date: date,
 
         origPrice: origPrice,
         tax: tax,
-        totalCost: totalCost,
+        totalPrice: totalPrice,
 
         ship: ship,
 
@@ -336,7 +284,6 @@ router.post('/storeData', function (req, res, next) {
         test: test,
 
         itemNames: nameAry
-
 
     });
 
