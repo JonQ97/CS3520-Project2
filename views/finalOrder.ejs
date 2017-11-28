@@ -19,11 +19,13 @@
     <li><a href="ProductsPage.html"> PRODUCTS</a></li>
 </ul>
 <table width="100%" height="198" border="0">
-    <td>
     <tr>
         <td width="24%" height="25"><b>Shipping Information:</b></td>
         <td width="27%">&nbsp;</td>
         <td width="49%" valign = "top" >&nbsp;</td>
+        <td width="28%" height="20"><b>Billing Information:</b></td>
+        <td width="50%">&nbsp;</td>
+        <td width="22%">&nbsp;</td></td>
     </tr>
     <tr>
         <td height="131" valign = "top">
@@ -44,14 +46,7 @@
 
         </td>
         <td>
-        <tr>
-            <td width="28%" height="20"><b>Billing Information:</b></td>
-            <td width="50%">&nbsp;</td>
-            <td width="22%">&nbsp;</td>
-        </tr>
-        <tr>
             <td height="117" valign = "top">
-
                 cc:&nbsp; <%= cardNum %> <br>
                 cvv/cvc: &nbsp; <%= cvv %> <br>
                 Postal: &nbsp; <%= cardZip %> <br>
@@ -61,8 +56,8 @@
                 <b>Card Type:</b>
                 <%= card %> <br>
             </td>
-        </tr>
-    </td>
+        </td>
+    </tr>
 </table>
 
     <table width="95%" border="4" cellpadding="5" cellspacing="0">
@@ -116,27 +111,8 @@
 
     </tr>
 </table>
-
 <table width="100%" border="0">
     <tbody>
-    <tr>
-        <td width="28%" height="20"><b>Billing Information:</b></td>
-        <td width="50%">&nbsp;</td>
-        <td width="22%">&nbsp;</td>
-    </tr>
-    <tr>
-        <td height="117" valign = "top">
-
-            cc:&nbsp; <%= cardNum %> <br>
-            cvv/cvc: &nbsp; <%= cvv %> <br>
-            Postal: &nbsp; <%= cardZip %> <br>
-            Card Holder: &nbsp;<%= cardName %> <br>
-        </td>
-        <td valign = "top">
-            <b>Card Type:</b>
-            <%= card %> <br>
-        </td>
-    </tr>
     <tr>
         <td height="20">
             <form action = "thankyou.php">
