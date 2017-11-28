@@ -61,7 +61,7 @@
 
     <% for (var i = 0; i < prodID.length; i++) { %>
 
-    <tr>
+    <h5><tr>
         <td>
             <center><%=prodID[i]%></center>
         </td>
@@ -84,7 +84,7 @@
         <td>
             <center>$<%=parseFloat(Math.round((price[i]*quant[i]*1.08) * 100) / 100).toFixed(2)%></center>
         </td>
-    </tr>
+    </tr></h5>
 
     <% } %>
 
@@ -96,10 +96,10 @@
                 <input type="submit" value = "Continue">
             </form>
         </td>
-        <td><h2><p><span style = "float:right;">$<%= origPrice %> </span>Subtotal </p>
-            <p style = "color: #3084DC"><span style = "float:right;">$ <%= tax %> </span>Estimated Tax</p>
-            <p ><span style = "float:right;">  $<%= ship %> </span>Shipping</p>
-            <p><span style = "float:right;"> $<%= totalPrice %></span>Total</p>
+        <td><h2><p><span style = "float:right;">&nbsp$<%= origPrice %> </span>Subtotal&nbsp </p>
+            <p style = "color: #3084DC"><span style = "float:right;">&nbsp$ <%= tax %> </span>Total Tax&nbsp</p>
+            <p ><span style = "float:right;">  &nbsp$<%= ship %> </span>Shipping&nbsp</p>
+            <p><span style = "float:right;"> &nbsp$<%= totalPrice %></span>Total&nbsp</p>
             </h2></td>
     </tr>
 </table>
