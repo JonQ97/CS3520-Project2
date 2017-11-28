@@ -1,265 +1,244 @@
-
-
 <!doctype html>
-
 <html>
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="http://csweb01.csueastbay.edu/~jb4522/Project1/ProductStyles.css">
-    <title>finalOrder</title>
+    <meta charset="utf-8">
+    <title>Final Order</title>
+    <link rel="stylesheet" href="productStyle.css">
+    <link rel="stylesheet" href="navigationBar.css">
 </head>
-
+<body bgcolor=beige>
 <body>
-
-
-
-<div class="topnav" id="myTopnav">
-    <a href="home.php">Home</a>
-    <a href="productsPage.html">Products</a>
-    <a href="cart.php">Cart</a>
-    <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
-</div>
-
-<h1>Order Summery:</h1>
-
-<table width="100%" height="41" border="2">
-    <tbody>
-    <tr>
-        <td height="37"><h2>Shipping</h2></td>
-    </tr>
-    </tbody>
-</table>
-
-
-<table width="100%" height="198" border="0">
-    <tbody>
-    </tbody>
-    <tbody>
-    </tbody>
-    <tbody>
-    </tbody>
-    <tbody>
-    </tbody>
-    <tbody>
-    </tbody>
-    <tbody>
-    </tbody>
-    <tbody>
-    </tbody>
-    <tbody>
-    </tbody>
-    <tbody>
-    <tr>
-        <td width="24%" height="25"><b>Shipping Information:</b></td>
-        <td width="27%">&nbsp;</td>
-        <td width="49%" valign = "top" >&nbsp;</td>
-    </tr>
-    <tr>
-        <td height="131" valign = "top">
-
-            <%= fName %>
-            <%= lName %> <br>
-            <%= addr1 %><br>
-            <%= addr2 %> <br>
-            <%= city %>,
-            <%= state %>
-            <%= zip %> <br>
-
-        </td>
-        <td valign = "top">
-
-            <%= phone %> <br>
-            <%= email %> <br>
-
-
-
-        </td>
-        <td>&nbsp;</td>
-    </tr>
-    <tr>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-    </tr>
-    </tbody>
-    <tbody>
-    <tr></tr>
-    </tbody>
-    <tbody>
-    <tr></tr>
-    </tbody>
-    <tbody>
-    <tr></tr>
-    </tbody>
-    <tbody>
-    <tr></tr>
-    </tbody>
-    <tbody>
-    <tr></tr>
-    </tbody>
-    <tbody>
-    <tr></tr>
-    </tbody>
-    <tbody>
-    <tr></tr>
-    </tbody>
-    <tbody>
-    <tr></tr>
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-<table width="930" border="0"><tr>
-
-        <th width="512" height="55" scope="col"></th>
-        <th width="180" scope="col"><h3>Item#</h3></th>
-        <th width="180" scope="col"><h3>Product ID</h3></th>
-        <th width="180" scope="col"><h3>Product Name</h3></th>
-        <th width="180" scope="col"><h3>Quantity</h3></th>
-        <th width="180" scope="col"><h3>Price</h3></th>
-        <th width="180" scope="col"><h3>Cost</h3></th>
-
-    </tr>
-    <?php
-    reset($session_basket);
-    $i=0;
-
-    $totalPrice = 0;
-
-    while(list($k, $v) = each($session_basket)) {
-    $i++;
-    $item = $session_basket[$k];
-    $image = "http://csweb01.csueastbay.edu/~jb4522/Project1/images/Profile/" . $item->code . ".jpg";
-    ?>
-
-    <tr>
-        <td><img src=" <?php echo $image ?>" width = "300" height = "200"  ></td>
-        <td>
-            <center><?php echo $i . ")"; ?> <img src=" "></center>
-        </td>
-        <td>
-            <center><?php echo $item->code; ?></center>
-        </td>
-        <td>
-            <center><?php echo $item->name; ?> </center>
-        </td>
-        <td>
-            <center>
-
-                <?php echo $item->quantity; ?>
-
-            </center>
-        </td>
-        <td>
-            <center><?php echo "$" . number_format($item->price); ?> </center>
-        </td>
-        <td>
-            <center><?php echo "$" . number_format($item->price * $item->quantity); ?> </center>
-        </td>
-    </tr>
-
-    <?php $totalPrice = ($totalPrice + ($item->price * $item->quantity)) ?>
-
-
-
-    <?php
-        //end of loop
-        }
-
-        ?>
-</table>
-
-<br>
-<br>
-<br>
-<br>
-<br>
+<ul>
+    <li><a class="active" href="#home">COMPLETE YOUR ORDER</a></li>
+    <li>&nbsp;</li>
+    <li>&nbsp;</li>
+    <li>&nbsp;</li>
+    <li><a href="index.html"> HOME </a></li>
+    <li><a href="ProductsPage.html"> PRODUCTS</a></li>
+</ul>
 <br>
 
-<table width="930" border="0"><tr>
+    <h1>Order Summary:</h1>
 
-        <td height="174">&nbsp;</td>
-        <td></td>
-
-        <td width = "175" valign = "top"><p><span style = "float:right;">$<%= origPrice %> </span>Subtotal </p>
-            <p>&nbsp;</p>
-            <p style = "color: #3084DC"><span style = "float:right;">$ <%= tax %> </span>Estimated Tax</p>
-            <p ><span style = "float:right;">  $<%= ship %> </span>Shipping</p>
-            <p><span style = "float:right;"> <%= totalPrice %></span>Total</p>
-        </td>
-
-    </tr>
-</table>
+    <table width="100%" height="41" border="2">
+        <tbody>
+        <tr>
+            <td height="37"><h2>Shipping</h2></td>
+        </tr>
+        </tbody>
+    </table>
 
 
+    <table width="100%" height="198" border="0">
+        <tbody>
+        </tbody>
+        <tbody>
+        </tbody>
+        <tbody>
+        </tbody>
+        <tbody>
+        </tbody>
+        <tbody>
+        </tbody>
+        <tbody>
+        </tbody>
+        <tbody>
+        </tbody>
+        <tbody>
+        </tbody>
+        <tbody>
+        <tr>
+            <td width="24%" height="25"><b>Shipping Information:</b></td>
+            <td width="27%">&nbsp;</td>
+            <td width="49%" valign = "top" >&nbsp;</td>
+        </tr>
+        <tr>
+            <td height="131" valign = "top">
+
+                <%= fName %>
+                <%= lName %> <br>
+                <%= addr1 %><br>
+                <%= addr2 %> <br>
+                <%= city %>,
+                <%= state %>
+                <%= zip %> <br>
+
+            </td>
+            <td valign = "top">
+
+                <%= phone %> <br>
+                <%= email %> <br>
 
 
-<br>
-<br>
-<br>
 
-<table width="100%" border="2">
-    <tbody>
-    <tr>
-        <td height="34"><h2>Billing</h2></td>
-    </tr>
-    </tbody>
-</table>
-<table width="100%" border="0">
-    <tbody>
-    <tr>
-        <td width="28%" height="20"><b>Billing Information:</b></td>
-        <td width="50%">&nbsp;</td>
-        <td width="22%">&nbsp;</td>
-    </tr>
-    <tr>
-        <td height="117" valign = "top">
-
-            cc:&nbsp; <%= cardNum %> <br>
-            cvv/cvc: &nbsp; <%= cvv %> <br>
-            Postal: &nbsp; <%= cardZip %> <br>
-            Card Holder: &nbsp;<%= cardName %> <br>
-        </td>
-        <td valign = "top">
-            <b>Card Type:</b>
-            <%= card %> <br>
-
-
-
-        </td>
-        <td>&nbsp;</td>
-    </tr>
-    <tr>
-
-        <td>&nbsp;</td>
-        <td height="20">
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        </tbody>
+        <tbody>
+        <tr></tr>
+        </tbody>
+        <tbody>
+        <tr></tr>
+        </tbody>
+        <tbody>
+        <tr></tr>
+        </tbody>
+        <tbody>
+        <tr></tr>
+        </tbody>
+        <tbody>
+        <tr></tr>
+        </tbody>
+        <tbody>
+        <tr></tr>
+        </tbody>
+        <tbody>
+        <tr></tr>
+        </tbody>
+        <tbody>
+        <tr></tr>
+        </tbody>
+    </table>
 
 
-            <form action = "thankyou.php">
-                <input type="submit" value = "continue">
-            </form>
 
 
-        </td>
 
-        <td>&nbsp;</td>
-    </tr>
-    </tbody>
-</table>
-<p>&nbsp;</p>
 
+
+
+
+
+    <table width="930" border="0"><tr>
+
+            <th width="512" height="55" scope="col"></th>
+            <th width="180" scope="col"><h3>Item#</h3></th>
+            <th width="180" scope="col"><h3>Product ID</h3></th>
+            <th width="180" scope="col"><h3>Product Name</h3></th>
+            <th width="180" scope="col"><h3>Quantity</h3></th>
+            <th width="180" scope="col"><h3>Price</h3></th>
+            <th width="180" scope="col"><h3>Cost</h3></th>
+
+        </tr>
+
+
+        <% for (var i = 0; i < prodID.length; i++) { %>
+
+
+        <tr>
+            <td><img src="http://csweb01.csueastbay.edu/~pg4425/Project1/images/<%=prodID[i]%>.jpg"width = "300" height = "200" ></td>
+            <td>
+                <center><%= i+1 %>)</center>
+            </td>
+            <td>
+                <center><%=prodID[i]%></center>
+            </td>
+            <td>
+                <center><%=itemNames[i]%></center>
+            </td>
+            <td>
+                <center><%=quant[i]%></center>
+            </td>
+            <td>
+                <center>$<%=price[i]%></center>
+            </td>
+            <td>
+                <center>$<%=price[i]%></center>
+            </td>
+        </tr>
+
+        <% } %>
+
+
+    </table>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <table width="930" border="0"><tr>
+
+            <td height="174">&nbsp;</td>
+            <td></td>
+
+            <td width = "175" valign = "top"><p><span style = "float:right;">$<%= origPrice %> </span>Subtotal </p>
+                <p>&nbsp;</p>
+                <p style = "color: #3084DC"><span style = "float:right;">$ <%= tax %> </span>Estimated Tax</p>
+                <p ><span style = "float:right;">  $<%= ship %> </span>Shipping</p>
+                <p><span style = "float:right;"> <%= totalCost %></span>Total</p>
+            </td>
+
+        </tr>
+    </table>
+
+
+
+
+    <br>
+    <br>
+    <br>
+
+    <table width="100%" border="2">
+        <tbody>
+        <tr>
+            <td height="34"><h2>Billing</h2></td>
+        </tr>
+        </tbody>
+    </table>
+    <table width="100%" border="0">
+        <tbody>
+        <tr>
+            <td width="28%" height="20"><b>Billing Information:</b></td>
+            <td width="50%">&nbsp;</td>
+            <td width="22%">&nbsp;</td>
+        </tr>
+        <tr>
+            <td height="117" valign = "top">
+
+                cc:&nbsp; <%= cardNum %> <br>
+                cvv/cvc: &nbsp; <%= CVV %> <br>
+                Postal: &nbsp; <%= czip %> <br>
+                Card Holder: &nbsp;<%= cname %> <br>
+            </td>
+            <td valign = "top">
+                <b>Card Type:</b>
+                <%= card %> <br>
+
+
+
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+
+            <td>&nbsp;</td>
+            <td height="20">
+
+
+                <form action = "clearCartLink.php">
+                    <input type="submit" value = "continue">
+                </form>
+
+
+            </td>
+
+            <td>&nbsp;</td>
+        </tr>
+        </tbody>
+    </table>
+    <p>&nbsp;</p>
+
+    </body>
 </body>
-
-
-
 </html>
 
 

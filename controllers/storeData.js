@@ -107,14 +107,86 @@ router.post('/storeData', function (req, res, next) {
     czip = req.body.czip;
 
     var date = req.body.date;
-
-    var totalCost = req.body.totalCost;
-
+    var origPrice = req.body.totalCost;
     var products = req.body.products;
+    var ship = req.body.ship;
+    var tax = (+origPrice * 0.08);
+    var totalCost = +origPrice + +ship + +tax;
+
+    var items = req.body.itemNames;
+
+    //Places item names into arrays
+
+    var nameAry = items.split(', ');
+
+    test = nameAry[0];
 
 
+    //********************************************************************************************************
+    //This Code is used to extract the incoming values of 'Product_Vector'
+    // and conveniently storing them into 3 separate arrays that could later be iterated over to get the values.
 
-    //var products = productAry.join();
+    var prodIDAry = [];
+    var quantAry = [];
+    var priceAry = [];
+    var start_pos; //Starting Postiion
+    var end_pos = 0;
+    var incr = 0;
+    var cur_pos = 0;
+
+    while ( true)
+    {
+
+        start_pos = products.indexOf('ProductID_', end_pos) + 10;
+
+        if(cur_pos > start_pos)//checker to break, because indexof will loop infinitely looking for string occurrences
+        {
+            break;
+        }
+        cur_pos = start_pos;
+        end_pos = products.indexOf(',', start_pos);
+        prodIDAry.push(products.substring(start_pos, end_pos));
+
+    }
+
+    end_pos = 0;
+    cur_pos = 0;
+
+    while ( true )
+    {
+
+        start_pos = products.indexOf('Quantity', end_pos) + 8;
+
+        if(cur_pos > start_pos)
+        {
+            break;
+        }
+        cur_pos = start_pos;
+
+        end_pos = products.indexOf(',', start_pos);
+        incr += end_pos;
+        quantAry.push(products.substring(start_pos, end_pos));
+
+
+    }
+
+    end_pos = 0;
+    cur_pos = 0;
+
+    while ( true )
+    {
+        start_pos = products.indexOf('Price', end_pos) + 5;
+
+        if(cur_pos > start_pos)
+        {
+            break;
+        }
+        cur_pos = start_pos;
+
+        end_pos = products.indexOf('}', start_pos);
+        priceAry.push(products.substring(start_pos, end_pos));
+    }
+
 
 
     // Create seed data -- it is in JSON format
@@ -249,9 +321,21 @@ router.post('/storeData', function (req, res, next) {
 
         date: date,
 
-        totalPrice: totalCost,
+        origPrice: origPrice,
+        tax: tax,
+        totalCost: totalCost,
+
+        ship: ship,
 
         products: products,
+
+        prodID: prodIDAry,
+        quant: quantAry,
+        price: priceAry,
+
+        test: test,
+
+        itemNames: nameAry
 
 
     });
