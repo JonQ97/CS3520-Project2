@@ -3,9 +3,6 @@ var app = express();
 var router = express.Router();
 var mongodb = require('mongodb');
 
-
-//module.exports.storeData =  function (request, response) {
-
 router.post('/storeData', function (req, res, next) {
 
     var customerID = Math.floor((Math.random() * 1000000000000) + 1);
@@ -31,8 +28,6 @@ router.post('/storeData', function (req, res, next) {
     var expireYY = " ";
     var cardZip = " ";
     var cardName = " ";
-
-
 
     var cardExp = req.body.expireMM + "/" + req.body.expireYY;
 
@@ -61,20 +56,11 @@ router.post('/storeData', function (req, res, next) {
 
     var items = req.body.itemNames;
 
-
-
     //Places item names into arrays
 
     var nameAry = items.split(', ');
-
     test = nameAry[0];
 
-
-
-
-
-
-    //********************************************************************************************************
     //This Code is used to extract the incoming values of 'Product_Vector'
     // and conveniently storing them into 3 separate arrays that could later be iterated over to get the values.
 
@@ -119,7 +105,6 @@ router.post('/storeData', function (req, res, next) {
         incr += end_pos;
         quantAry.push(products.substring(start_pos, end_pos));
 
-
     }
 
     end_pos = 0;
@@ -138,14 +123,6 @@ router.post('/storeData', function (req, res, next) {
         end_pos = products.indexOf('}', start_pos);
         priceAry.push(products.substring(start_pos, end_pos));
     }
-
-
-
-
-
-
-
-
 
     // Create seed data -- it is in JSON format
     var seedCust = [
@@ -187,7 +164,6 @@ router.post('/storeData', function (req, res, next) {
             CREDITCARDEXP: cardExp,
             CREDITCARDSECURITYNUM: cvv,
             CARD_NAME: cardName
-            //CardZip: cardZip
 
         }
     ];
@@ -206,11 +182,9 @@ router.post('/storeData', function (req, res, next) {
         }
     ];
 
-
 // Standard URI format:  mongodb://[dbuser:dbpassword@]host:port/dbname
 // GO TO mLab.com account to see what YOUR database URL is
 //CHANGE the url so it is correct for your account
-    //var uri = 'mongodb://steven:steven@ds259175.mlab.com:59175/songscs3520';
     var uri = 'mongodb://project2TestUser:project2Test@ds255715.mlab.com:55715/heroku_nkdzppr7'
 
 //using mongodb module
@@ -218,10 +192,6 @@ router.post('/storeData', function (req, res, next) {
 
         if (err) throw err;
 
-        /*
-         * First we'll add a  few songs. Nothing is required to create the
-         * songs collection;  it is created automatically when we insert.
-         */
         var custInfo = db.collection('CUSTOMER');
         var shipping = db.collection('SHIPPING');
         var billing = db.collection('BILLING');
@@ -243,10 +213,7 @@ router.post('/storeData', function (req, res, next) {
             if (err) throw err;
         });
 
-
     });
-
-
 
     res.render('finalOrder',{
 
@@ -286,12 +253,6 @@ router.post('/storeData', function (req, res, next) {
         itemNames: nameAry
 
     });
-
 });
 
-//};
-
-
-
 module.exports = router;
-
