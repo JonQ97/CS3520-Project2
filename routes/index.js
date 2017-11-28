@@ -1,68 +1,145 @@
+//////////////////////////////////////////////////////////
+
 var express = require('express');
+var app = express();
 var router = express.Router();
 var mongodb = require('mongodb');
 module.exports = router;
+
+/* GET home page. */
+
+router.get('/', function(req, res, next) {
+    res.render('index', { title: 'Hello World!' });
+});
+
+//########################################
+//to process data sent in on request need body-parser module
+var bodyParser = require('body-parser');
+var path = require ('path'); //to work with separtors on any OS including Windows
+var querystring = require('querystring'); //for use in GET Query string of form URI/path?name=value
+
+router.use(bodyParser.json()); // for parsing application/json
+router.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencode
+//#########################################
+
+router.post('/readNameAndRespond', function(req, res, next) {
+
+    //expecting data variable called name --retrieve value using body-parser
+    var body = JSON.stringify(req.body);  //if wanted entire body as JSON
+    var params = JSON.stringify(req.params);//if wanted parameters
+    //expecting data variable called name --retrieve value using body-parser
+
+    var value_name = req.body.name;  //retrieve the data associated with name
+
+    //var value_name = req.params.name;  //retrieve the data associated with name
+    //res.render('readNameAndRespond', {outputName: req.params.name })
+
+    res.send("hello " + value_name);
+});
+
 //LOAD the various controllers
 //var controllerMain = require('../controllers/main');   //this will load the main controller file
-var controllerMongoCollection = require('../controllers/database'); //load controller code dealing with database mongodb and Routes collection
 
+var controllerMongoCollection = require('../controllers/database'); //load controller code dealing with database mongodb and Routes collection
+var controllerstoreData = require('../controllers/storeData');
 //MAY HAVE OTHER CODE in index.js
-//CODE to route /getAllOrders to appropriate  Controller function
+
+//CODE to route /getAllRoutes to appropriate  Controller function
 //**************************************************************************
-//***** mongodb get all of the Orders in ORDERS collection
-//      and Render information with an ejs view
+//***** mongodb get all of the Routes in Routes collection w
+//      and Render information iwith an ejs view
+
 router.get('/getAllOrders', controllerMongoCollection.getAllOrders);
 
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+//neither app.post nor router.post worked for me to call "storeData" so I took a different route
+//app.post('/storeData', controllerstoreData.storeData);
+
+
+
+/*
 router.post('/readOrderAndRespond', function(req, res, next) {
-    var $firstName = req.body.$firstName;
-// Create seed data -- it is in JSON format
-//_id, CUSTOMER_ID, BILLING_ID, SHIPPING_ID, DATE, PRODUCT_VECTOR, ORDER_TOTAL
+
+    var fName = req.body.firstName;  //retrieve the data associated with name
+    var lName = req.body.lastName;
+    var addr1 = req.body.addr1;
+    var addr2 = req.body.addr2;
+    var city = req.body.city;
+    var state = req.body.state;
+
+    //app.set('firstName', firstName);
+
+    //var value_name = req.params.name;  //retrieve the data associated with name
+
+    //res.render('readOrderAndRespond',
+        //{firstName: firstName, lastName: lastName, addr1: addr1, city:city})
+
+
+    // Create seed data -- it is in JSON format
     var seedData = [
         {
-            FirstName: $firstName
+            FirstName: firstName,
+            LastName: lastName,
+            Address: addr1,
+            City: city
+
         }
     ];
 
+
+    var customerdata = {
+        _id: customerID,
+        FIRSTNAME: shipment_info[fname],
+        LASTNAME: shipment_info['lname'],
+        STREET: shipment_info['add1'] + ' ' + shipment_info['add2'],
+        CITY: shipment_info['city'],
+        STATE: shipment_info['state'],
+        ZIP: shipment_info['zipcode'],
+        PHONE: shipment_info['phone']
+    };
+    CUSTOMERS.insertOne(customerdata, function (err, result) {
+        if (err) throw err;
+    });
+
 // Standard URI format:  mongodb://[dbuser:dbpassword@]host:port/dbname
-//var uri ='mongodb://project2TestUser:project2Test@ds064198.mlab.com:64198/project-2-orders';
-    var uri = 'mongodb://project2TestUser:project2Test@ds255715.mlab.com:55715/heroku_nkdzppr7';
+// GO TO mLab.com account to see what YOUR database URL is
+//CHANGE the url so it is correct for your account
+    var uri ='mongodb://steven:steven@ds259175.mlab.com:59175/songscs3520';
 
 //using mongodb module
-    mongodb.MongoClient.connect(uri, function (err, db) {
+    mongodb.MongoClient.connect(uri, function(err, db) {
 
-        if (err) throw err;
+        if(err) throw err;
 
-        var ORDERS = db.collection('ORDERS');
+        /*
+         //* First we'll add a  few songs. Nothing is required to create the
+         //* songs collection;  it is created automatically when we insert.
 
-        // Note that the insert method can take either an array or a dict.
-        ORDERS.insert(seedData, function (err, result) {
-            if (err) throw err;
 
-            ORDERS.update(
-                {CUSTOMER_ID: '0003'},
-                {$set: {PRODUCT_VECTOR: 'House Clegane'}},
-                function (err, result) {
-                    if (err) throw  err;
-                    ORDERS.find({DATE: {$gte: 10}}).sort({CUSTOMER_ID: 1}).toArray(function (err, docs) {
-                        if (err) throw err;
-                        docs.forEach(function (doc) {
-                            console.log('ORDER: ' + doc['CUSTOMER_ID'] + ', ' + doc['BILLING_ID'] + ' by ' + doc ['SHIPPING_ID']
-                                + ' was ordered ' + doc['DATE']);
-                        });
-                        //_id, CUSTOMER_ID, BILLING_ID, SHIPPING_ID, DATE, PRODUCT_VECTOR, ORDER_TOTAL
-                        // uncomment the following code if you wish to drop the collection (like a table) songs
-                        /***************************commented OUT
-                         songs.drop(function (err) {
-              if(err)  throw err;
-              // Only  close the connection when your app is terminating.
-              db.close(function  (err) {
-                if(err)  throw err;
-               });
-            });
-                         */
-                    });
-                }
-            );
+        var Customers =  db.collection('Customers');
+
+        // Note that the  insert method can take either an array or a dict.
+        Customers.insert(seedData, function(err, result) {
+            if(err) throw err;
+
+            /*
+             //* Then we need to  give Boyz II Men credit for their contribution
+             //* to the hit  "One Sweet Day".
+
+
         });
     });
+
+
 });
+*/
+
+//router.post('/insert')
+
+
+
+
+
