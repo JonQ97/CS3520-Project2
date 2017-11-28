@@ -43,8 +43,8 @@ router.post('/storeData', function (req, res, next) {
     var cname = " ";
 
     /*  ALL POST PARAMETERS FROM FINALORDER2.PHP:
-    ->addPostParameter('fName', $_SESSION['firstName'])
-    ->addPostParameter('lName', $_SESSION['lastName'])
+    ->addPostParameter('fName', $_SESSION['fName'])
+    ->addPostParameter('lName', $_SESSION['lName'])
     ->addPostParameter('addr1', $_SESSION['addr1'])
     ->addPostParameter('addr2', $_SESSION['addr2'])
     ->addPostParameter('city', $_SESSION['city'])
@@ -52,10 +52,10 @@ router.post('/storeData', function (req, res, next) {
     ->addPostParameter('zip', $_SESSION['zip'])
     ->addPostParameter('phone', $_SESSION['phone'])
     ->addPostParameter('email', $_SESSION['email'])
-    ->addPostParameter('sameAsBilling', $_SESSION['$sameAsBilling'])
+    ->addPostParameter('sameAsBilling', $_SESSION['sameAsBilling'])
 
-    ->addPostParameter('sfirstName', $_SESSION['sfirstName'])
-    ->addPostParameter('slastName', $_SESSION['slastName'])
+    ->addPostParameter('sfName', $_SESSION['sfName'])
+    ->addPostParameter('slName', $_SESSION['slName'])
     ->addPostParameter('saddr1', $_SESSION['saddr1'])
     ->addPostParameter('saddr2', $_SESSION['saddr2'])
     ->addPostParameter('scity', $_SESSION['scity'])
