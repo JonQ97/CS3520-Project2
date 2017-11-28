@@ -125,7 +125,7 @@ router.post('/storeData', function (req, res, next) {
     //********************************************************************************************************
     //This Code is used to extract the incoming values of 'Product_Vector'
     // and conveniently storing them into 3 separate arrays that could later be iterated over to get the values.
-
+/*
     var prodIDAry = [];
     var quantAry = [];
     var priceAry = [];
@@ -186,7 +186,7 @@ router.post('/storeData', function (req, res, next) {
         end_pos = products.indexOf('}', start_pos);
         priceAry.push(products.substring(start_pos, end_pos));
     }
-
+*/
 
 
     // Create seed data -- it is in JSON format
