@@ -23,15 +23,6 @@
 
 <h1>Order Summary:</h1>
 
-<table width="100%" height="41" border="2">
-    <tbody>
-    <tr>
-        <td height="37"><h2>Shipping</h2></td>
-    </tr>
-    </tbody>
-</table>
-
-
 <table width="100%" height="198" border="0">
 
     <tr>
@@ -56,17 +47,8 @@
             <%= phone %> <br>
             <%= email %> <br>
 
-
-
         </td>
-
 </table>
-
-
-
-
-
-
 
     <table width="95%" border="4" cellpadding="5" cellspacing="0">
         <tr><td><h5> Product ID </h5></td><td><h5> Image </h5></td><td><h5> Product Name </h5></td>
@@ -75,15 +57,12 @@
 
     <% for (var i = 0; i < prodID.length; i++) { %>
 
-
     <tr>
-        <td><img src="http://csweb01.csueastbay.edu/~pg4425/Project1/images/<%=prodID[i]%>.jpg" width = "200" height = "200" ></td>
-        <td>
-            <center><%= i+1 %>)</center>
-        </td>
         <td>
             <center><%=prodID[i]%></center>
         </td>
+        <td><img src="http://csweb01.csueastbay.edu/~pg4425/Project1/images/<%=prodID[i]%>.jpg"
+                 width = "100" height = "100" ></td>
         <td>
             <center><%=itemNames[i]%></center>
         </td>
@@ -94,7 +73,10 @@
             <center>$<%=price[i]%></center>
         </td>
         <td>
-            <center>$<%=price[i]%></center>
+            <center>$<%=(price[i]*0.08)%></center>
+        </td>
+        <td>
+            <center>$<%=(price[i]*1.08)%></center>
         </td>
     </tr>
 
