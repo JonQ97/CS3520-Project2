@@ -20,25 +20,10 @@ router.use(bodyParser.json()); // for parsing application/json
 router.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencode
 //#########################################
 
-router.post('/readNameAndRespond', function(req, res, next) {
-
-    //expecting data variable called name --retrieve value using body-parser
-    var body = JSON.stringify(req.body);  //if wanted entire body as JSON
-    var params = JSON.stringify(req.params);//if wanted parameters
-    //expecting data variable called name --retrieve value using body-parser
-
-    var value_name = req.body.name;  //retrieve the data associated with name
-
-    //var value_name = req.params.name;  //retrieve the data associated with name
-    //res.render('readNameAndRespond', {outputName: req.params.name })
-
-    res.send("hello " + value_name);
-});
-
 //LOAD the various controllers
 //var controllerMain = require('../controllers/main');   //this will load the main controller file
 
-var controllerMongoCollection = require('../controllers/database'); //load controller code dealing with database mongodb and Routes collection
+//var controllerMongoCollection = require('../controllers/database'); //load controller code dealing with database mongodb and Routes collection
 var controllerstoreData = require('../controllers/storeData');
 //MAY HAVE OTHER CODE in index.js
 
@@ -47,7 +32,7 @@ var controllerstoreData = require('../controllers/storeData');
 //***** mongodb get all of the Routes in Routes collection w
 //      and Render information iwith an ejs view
 
-router.get('/getAllOrders', controllerMongoCollection.getAllOrders);
+router.get('/storeData', controllerstoreData.storeData);
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
