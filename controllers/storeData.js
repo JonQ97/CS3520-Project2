@@ -110,8 +110,8 @@ router.post('/storeData', function (req, res, next) {
     var origPrice = req.body.totalCost;
     var products = req.body.products;
     var ship = req.body.ship;
-    var tax = origPrice * 0.08;
-    var totalCost = origPrice + ship + tax;
+    var tax = (+origPrice * 0.08);
+    var totalCost = +origPrice + +ship + +tax;
 
     var items = req.body.itemNames;
 
@@ -137,7 +137,7 @@ router.post('/storeData', function (req, res, next) {
     while ( true)
     {
 
-        start_pos = products.indexOf('ProductID_', end_pos) + 11;
+        start_pos = products.indexOf('ProductID_', end_pos) + 10;
 
         if(cur_pos > start_pos)//checker to break, because indexof will loop infinitely looking for string occurrences
         {
