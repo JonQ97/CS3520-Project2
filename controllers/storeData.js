@@ -213,9 +213,15 @@ router.post('/storeData', function (req, res, next) {
             if (err) throw err;
         });
 
+        //CLOSE CONNECTION when your app is terminating *************************
+
+        db.close(function (err) {
+            if(err) throw err;
+        });
+
     });
 
-    res.render('finalOrder',{
+    res.render('storeData',{
 
 
         fName: fName,
@@ -256,3 +262,4 @@ router.post('/storeData', function (req, res, next) {
 });
 
 module.exports = router;
+
